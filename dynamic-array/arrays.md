@@ -4,7 +4,7 @@
 
 Copy and rebuild a static array at a new location, with new memory size. 
 
-**Operation**|** Cost**
+**Operation**|**Cost**
 :-----:|:-----:
 Lookup| O(1)
 Append | O(1) can be O(n) <=> triggers an expansion
@@ -17,7 +17,7 @@ Fixed in size. It cannot grow.
 
 ### Performance
 
-**Operation**|** Cost**
+**Operation**|**Cost**
 :-----:|:-----:
 Lookup| O(1)
 Push| O(1)
