@@ -35,7 +35,7 @@ Pop | O(1)
 ```python 
 # Edge Case 
 # i. arrays of different length?
-# ii. alwas the same input type, input 1 is of the same type of input 2 and vice versa
+# ii. always the same input type, input 1 is of the same type of input 2 and vice versa
 
 #### START ####
 arr_1 = ['a', 'b', 'c', 'x']
@@ -55,13 +55,9 @@ assert test2 == True
 
 **Why use enumerate?**
 
-First of all, the alternative way can be costly: 
+>The alternative way can be costly: 
 You either need a separate variable assignment to get the element or use a[i] all the time which could theoretically be an expensive operation. 
-
 Imagine a being a database cursor: When you iterate it (a.__iter__ being called) the object can safely assume that you are going to iterate over all its items. 
-
 So all or at least multiple rows could be retrieved at once. When getting the length such an optimization would be stupid though since you surely don't want to retrieve data just because you want the number of items. 
-
 Also, when retrieving a specific item you cannot assume that other items will be retrieved, too.
-
 Additionally, using enumerate() works with any iterable while range(len()) only works with countable, indexable objects.
