@@ -53,47 +53,15 @@ test2 = hasCommonItem(arr_1, arr_3)
 assert test2 == True
 ```
 
-**Solution:** 17
+**Why use enumerate?**
 
->First of all, the first way is ugly: You either need a separate variable assignment to get the element or use a[i] all the time which could theoretically be an expensive operation. Imagine a being a database cursor: When you iterate it (a.__iter__ being called) the object can safely assume that you are going to iterate over all its items. So all or at least multiple rows could be retrieved at once. When getting the length such an optimization would be stupid though since you surely don't want to retrieve data just because you want the number of items. Also, when retrieving a specific item you cannot assume that other items will be retrieved, too.
+First of all, the alternative way can be costly: 
+You either need a separate variable assignment to get the element or use a[i] all the time which could theoretically be an expensive operation. 
+
+Imagine a being a database cursor: When you iterate it (a.__iter__ being called) the object can safely assume that you are going to iterate over all its items. 
+
+So all or at least multiple rows could be retrieved at once. When getting the length such an optimization would be stupid though since you surely don't want to retrieve data just because you want the number of items. 
+
+Also, when retrieving a specific item you cannot assume that other items will be retrieved, too.
+
 Additionally, using enumerate() works with any iterable while range(len()) only works with countable, indexable objects.
-
-## Implementing an Array in Python 
-
-```python 
-import ctypes 
-
-class DynamicArray: 
-"""A Dynamic Array """"
-    def __init__(self):
-        self._n = 0;
-        self._capacity = 1;
-        self._resize = 2;
-        self._A = self._make_array(self._capacity)
-
-    def _make_array(self, c):
-    """ return a new array with the capacity c  """
-        return (c * ctypes.py_object)()
-
-    def __len__(self):
-       return self._n
-
-    def __getitem__(self, k):
-        if not k <= k < self._n:
-            raise IndexError('Out of bounds')
-        return self._A[k]
-
-    def _resize(self, c):
-      B = _make_array(c)
-      for k in range(self._n):
-        B[k] = self._A[k]
-      self._A = B
-      self._capacity = c 
-
-    def append(self, obj):
-        if self._n == self._capacity:
-            self._resize( 2 * self._capacity)
-        self._A[self._n] = obj
-        self._n += 1
-        
-```
